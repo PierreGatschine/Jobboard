@@ -2,8 +2,8 @@
 <div>
     <Appbar/>
    <!--  <Home/> -->
-   <Advertisementlist/>
-   <!--  <Tutorial/> -->
+   <AdvList/>
+  <!--  <Tutorial/> -->
 </div>
 
 </template>

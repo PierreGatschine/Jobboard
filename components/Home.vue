@@ -1,5 +1,4 @@
 <template>
-
     <div class="wrapper">
       <div class="title">
         toto<span class="text-blue-500">Offres</span>
