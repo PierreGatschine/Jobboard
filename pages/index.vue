@@ -1,14 +1,18 @@
 <template>
 <div>
-  <Appbar/>
-  <Home/>
-  <Tutorial/>
+    <Appbar/>
+   <!--  <Home/> -->
+   <Advertisementlist/>
+   <!--  <Tutorial/> -->
 </div>
 
 </template>
 
 <script>
-export default {}
+/* import advertisementList from '../components/AdvertisementList.vue'
+
+export default {
+  components: { advertisementList },} */
 </script>
 
 <style lang="postcss" scoped>

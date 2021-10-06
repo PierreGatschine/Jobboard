@@ -4,15 +4,7 @@
       <div class="title">
         toto<span class="text-blue-500">Offres</span>
       </div>
-      <div class="card">
-        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Case study</div>
-        <p class="mt-2 text-gray-500">Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers.</p>
-      </div>
     </div>
-
-
-
-
 </template>
 
 <script>

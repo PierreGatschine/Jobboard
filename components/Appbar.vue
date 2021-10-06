@@ -3,7 +3,7 @@
 
     <nav>
         <img src="../static/totoJob_logo2.svg"/>
-      <div>
+      <div class="navBar">
         <NuxtLink to="/" class="btn">Home</NuxtLink>
         <NuxtLink to="/form" class="btn">Form</NuxtLink>
         <NuxtLink to="/login" class="btn">Login</NuxtLink>
@@ -20,23 +20,26 @@ export default {
 
 <style lang="postcss" scoped>
   nav {
-    @apply flex flex-row  justify-between items-center py-2 p-2.5 w-full bg-gray-50;
+    @apply flex flex-row  justify-between items-end py-2 p-1 w-full bg-white;
+  }
+  .navBar {
+    @apply flex justify-around p-0;
   }
   img {
-    @apply w-1/3 p-0;
+    @apply w-32 p-0;
   }
   .logo {
 
    /*  @apply text-2xl p-2 font-bold text-blue-600; */
   }
   .btn {
-    @apply px-4 font-bold text-blue-500 rounded-lg;
+    @apply px-4 font-bold text-blue-500 items-end rounded-lg;
   }
   .btn:hover {
     @apply bg-blue-600 text-gray-50 py-2;
   }
   .nuxt-link-exact-active {
-    @apply bg-blue-600 text-gray-50 py-2 rounded-lg;
+    @apply bg-blue-600 text-gray-50 py-2 items-end rounded-lg;
   }
 
 
