@@ -9,24 +9,53 @@ import advertisementList from '..';
       <div class="flex justify-center sm:flex-wrap pt-8 sm:pt-0 text-6xl font-bold text-blue-600">toto<span class="text-blue-500">Offres</span></div>
 
       <div class="mt-8 bg-white text-gray-600 overflow-hidden shadow rounded-lg m-2 p-6" v-for="(item, index) in allAdvertisements" v-bind:key="index">
-        <h2 class="text-2xl leading-7 font-semibold">
-            {{ item.title }}
-        </h2>
-        <p class="mt-3 text-gray-600">
-            {{ item.resume}}
-        </p>
-        <p class="mt-4 pt-4 text-gray-600 border-t border-dashed">
-            paru le <spam class="font-thin">{{ item.date}}</spam>
-        </p>
         <div class="flex justify-between items-center mx-auto">
-            <p class="mt-4 pt-4 text-gray-600">
-              {{ item.contrat_type}} - {{ item.temps_de_travail}}
-            </p>
-            <button class="bg-blue-600 hover:bg-blue-700 text-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 rounded-full px-6 py-4">
-               <span class="text-2xl font-semibold">+</span>
-            </button>
+          <h2 class="text-2xl leading-7 font-semibold">
+            {{ item.title }}
+          </h2>
+          <div class="btn ml-1">
+            <btn msg="Apply"/>
+          </div>
         </div>
 
+        <h3 class="text-xl leading-7 font-light">
+            {{ item.name}}
+        </h3>
+        <p class="mt-3 text-gray-600">
+            <spam class="font-bold">Skills</spam><br/>
+            {{ item.resume}}
+        </p>
+        <div v-show="showModal">
+                <p class="mt-4 pt-4 text-gray-600">
+                  <spam class="font-bold">Missions</spam><br/>
+                  {{ item.description}}
+                </p>
+                <p class="mt-4 pt-4 text-gray-600">
+                  <spam class="font-bold">City</spam><br/>
+                  {{ item.lieu}}
+                </p>
+                <p class="mt-4 pt-4 text-gray-600">
+                  <spam class="font-bold">Salaire annuel</spam><br/>
+                  {{ item.salaire}}
+                </p>
+        </div>
+        <p class="mt-4 pt-4 text-gray-600">
+            <spam class="font-bold">Type de contrat</spam><br/>
+            {{ item.contrat_type}} - {{ item.temps_de_travail}}
+        </p>
+        <div class="flex justify-between items-center mx-auto">
+            <p class="mt-4 pt-4 text-gray-600 border-t border-dashed">
+              paru il y a,  <spam class="font-thin">{{ item.parution}}</spam>
+            </p>
+            <div class="displayMoreInfo" @click.stop="showModal = !showModal">
+              <button class="bg-blue-600 hover:bg-blue-700 text-gray-50 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded-full px-6 py-4">
+                <span class="text-2xl font-semibold">+</span>
+              </button>
+            </div>
+        </div>
+        <div class="btn mt-4 mb-3">
+          <btn msg="Apply"/>
+        </div>
       </div>
     </div>
   </div>
@@ -39,6 +68,7 @@ import advertisementList from '..';
     data(){
         return{
           allAdvertisements: [],
+          showModal: false,
         }
     },
 
@@ -48,6 +78,9 @@ import advertisementList from '..';
         console.log("message:", advertisements);
         this.allAdvertisements = advertisements;
         console.log(allAdvertisements);
+      },
+      displayMoreInfo() {
+        console.log("Toto continu !");
       }
     },
 

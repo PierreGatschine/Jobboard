@@ -5,7 +5,7 @@
         <img src="../static/totoJob_logo2.svg"/>
       <div class="navBar">
         <NuxtLink to="/" class="btn">Home</NuxtLink>
-        <NuxtLink to="/form" class="btn">Form</NuxtLink>
+        <NuxtLink to="/form" class="btn">Adm</NuxtLink>
         <NuxtLink to="/login" class="btn">Login</NuxtLink>
       </div>
     </nav>
