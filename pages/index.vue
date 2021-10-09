@@ -15,7 +15,7 @@ export default {
   components: { advertisementList },} */
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
   html {
     @apply bg-gray-200;
   }

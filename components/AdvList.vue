@@ -14,7 +14,7 @@ import advertisementList from '..';
             {{ item.title }}
           </h2>
           <div class="btn ml-1">
-            <btn msg="Apply"/>
+            <btn direction="form" msg="Apply"/>
           </div>
         </div>
 
@@ -73,6 +73,9 @@ import advertisementList from '..';
     },
 
     methods: {
+      /* async asyncData({ params, $axios }) {
+      const post = await $axios.$get(`http://localhost:3001/advertisements//${params.id}`)
+      return { post } */
       async fetchSomething() {
         const advertisements  = await this.$axios.$get('http://localhost:3001/advertisements');
         console.log("message:", advertisements);
@@ -85,6 +88,7 @@ import advertisementList from '..';
     },
 
     mounted() {
+      /* this.asyncData(); */
       this.fetchSomething();
       }
 }

@@ -1,12 +1,14 @@
 <template>
   <div>
     <Appbar/>
-    Login
+    <wrapper msg="Connexion"/>
   </div>
 </template>
 
 <script>
+import wrapper from '../components/wrapper.vue'
 export default {
+  components: { wrapper },
 
 }
 </script>
