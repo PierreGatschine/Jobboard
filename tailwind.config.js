@@ -21,6 +21,8 @@ module.exports = {
       serif: ["Merriweather", "serif"]
     },
     screens: {
+      mobile: "448px",
+      // => @media (min-width: 448px) { ... }
       tablet: "640px",
       // => @media (min-width: 640px) { ... }
 

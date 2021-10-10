@@ -2,11 +2,11 @@
   <div>
     <Appbar/>
     <div class="m-3 mb-5">
-      <wrapper msg="formulaire"/>
+      <Wrapper msg="Formulaire"/>
     </div>
 
     <form @submit.prevent="sendForm" class="w-full max-w-sm mx-auto">
-      <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="flex flex-wrap -mx-3 mt-6 mb-6">
         <div class="w-full px-3">
           <fieldset>
                   <div>
@@ -14,19 +14,19 @@
                   </div>
                   <div class="flex  mt-4 space-x-4">
                     <div class="flex items-center">
-                      <input v-model="dataForm.genre" value="a" id="genre_male" name="genre" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
+                      <input v-model="genre" value="male" id="genre_male" name="genre" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
                       <label for="genre_male" class="ml-3 block text-sm font-medium text-gray-700">
                         Mr
                       </label>
                     </div>
                     <div class="flex items-center">
-                      <input v-model="dataForm.genre" id="genre_female" name="genre" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
+                      <input v-model="genre" value="female" id="genre_female" name="genre" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
                       <label for="genre_female" class="ml-3 block text-sm font-medium text-gray-700">
                         Miss
                       </label>
                     </div>
                     <div class="flex items-center">
-                      <input v-model="dataForm.genre" id="genre_other" name="genre" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
+                      <input v-model="genre" value="other" id="genre_other" name="genre" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
                       <label for="genre_other" class="ml-3 block text-sm font-medium text-gray-700">
                         other
                       </label>
@@ -41,7 +41,7 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
             Name
           </label>
-          <input v-model="dataForm.name" type="text" placeholder="Doe" name="name" id="name" autocomplete="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+          <input v-model="name" type="text" placeholder="Doe" name="name" id="name" autocomplete="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
           <p class="text-red-500 text-xs italic" v-if="errors.emptyContent">Please fill out this field.</p>
         </div>
       </div>
@@ -51,7 +51,7 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password">
             Password
           </label>
-          <!-- <input v-model="datForm.password" type="password" name="password" id="password"  placeholder="******************" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"> -->
+          <input v-model="password" type="password" name="password" id="password"  placeholder="******************" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
           <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
         </div>
       </div>
@@ -61,7 +61,7 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
             email
           </label>
-          <input v-model="dataForm.email" type="text" placeholder="email" name="email" id="email" autocomplete="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <input v-model="email" type="text" placeholder="email" name="email" id="email" autocomplete="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
 
         </div>
       </div>
@@ -74,7 +74,7 @@
           <!-- <span class="inline-flex rounded-l-md py-3 px-4 mb-3 leading-tight focus:outline-none border-gray-300 bg-gray-50 text-gray-500 text-sm">
                       +33
           </span> -->
-          <input v-model="dataForm.phone" type="text" name="phone" id="phone" placeholder="+33 6 XX XX XX XX" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <input v-model="phone" type="text" name="phone" id="phone" placeholder="+33 6 XX XX XX XX" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
 
         </div>
       </div>
@@ -84,7 +84,7 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="address">
             address
           </label>
-          <input v-model="dataForm.address" type="text" name="address" id="address" placeholder="address" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <input v-model="address" type="text" name="address" id="address" placeholder="address" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
         </div>
       </div>
 
@@ -93,7 +93,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="city">
               City
             </label>
-            <input v-model="dataForm.city" type="text" name="city" placeholder="Albuquerque" id="city" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            <input v-model="city" type="text" name="city" placeholder="Albuquerque" id="city" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
         </div>
       </div>
 
@@ -102,7 +102,7 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="zip">
             Zip
           </label>
-          <input v-model="dataForm.zip" type="text" name="zip" id="zip" placeholder="13210" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <input v-model="zip" type="text" name="zip" id="zip" placeholder="13210" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
         </div>
       </div>
       <div class="flex flex-wrap -mx-3 mb-6">
@@ -135,8 +135,10 @@
              <!--   @click="sendForm" -->
               <button type="submit" class="inline-flex justify-center mt-3 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 Save
-                <span v-if="msg">{{ message }}</span>
+
               </button>
+              <span v-if="msg != 'err'" class="text-green-600 text-xs italic">{{ message }}</span>
+              <span v-else class="text-red-500 text-xs italic">{{ message }}</span>
         </div>
       </div>
     </form>
@@ -154,18 +156,17 @@ export default {
         },
        /*  valid: true, */
 
-        dataForm:{
+
           genre:"",
           name:"",
-          /* password:"", */
+          password:"",
           email:"",
           phone: "",
           address:"",
           city:"",
           zip:"",
           /* file_upload:"" */
-        },
-       dataForms: "",
+
         msg: false,
         message:"",
   }
@@ -186,10 +187,13 @@ export default {
          .then(
             res => {
               console.log('toto', res);
+              this.message = 'Vos informations personnelles ont été enregistrées !';
+              this.msg = true;
             }
         ).catch(
             err => {
               console.log('titi', err);
+              this.message = err;
             }
         );
 
@@ -204,15 +208,15 @@ export default {
     }, */
 
   },
-  mounted() {
+  /* mounted() {
       this.sendForm();
-      } 
+      } */
 
 }
 </script>
 
 <style lang="postcss" scoped>
   form {
-    @apply bg-gray-50 rounded-lg p-3
+    @apply bg-white rounded-lg p-3 mx-auto;
   }
 </style>
