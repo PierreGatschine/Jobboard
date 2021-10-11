@@ -28,6 +28,8 @@
             email
           </label>
           <input v-model="email" :rules="emailRules" type="text" placeholder="email" name="email" id="email" autocomplete="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <p class="text-red-500 text-xs italic" v-if="errors.emptyEmail">Please fill out this field.</p> -->
+          <p class="text-red-500 text-xs italic" v-else-if="errors.badValueEmail">Please enter a valid address.</p> -->
 
         </div>
       </div>
@@ -66,24 +68,107 @@ export default {
     return {
       valid: true,
 
-      firstnameRules: [
-          v => !!v || 'Renseignez votre prénom',
-          v => /^[A-Za-z]+$/.test(v) || "Votre prénom n'est pas valide",
-      ],
-      lastnameRules: [
-          v => !!v || 'Renseignez votre nom',
-          v => /^[A-Za-z]+$/.test(v) || "Votre nom n'est pas valide",
-      ],
-      emailRules: [
-          v => !!v || 'Renseignez votre e-mail',
-          v => /.+@.+\..+/.test(v) || "Votre e-mail n'est pas valide",
-      ],
-      passRules: [
-          v => !!v || 'Renseignez votre mot de passe',
-          v => (v && v.length >= 5) || '5 caractères minimun',
-          v => /(?=.*[A-Z])/.test(v) || 'Au moins une majuscule',
-          v => /(?=.*\d)/.test(v) || 'Au moins un chiffre',
-      ],
+      errors: {
+                emptyEmail: false,
+                badValueEmail: false,
+                emptyFirstname: false,
+                badValueFirstname: false,
+                emptyLastname: false,
+                badValueLastname: false,
+                emptyPassword: false,
+                badValuePassword: false,
+            },
+
+      methods: {
+        checkEmail(email) {
+            let re = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        },
+        checkOnlyLetters(value) {
+            let re = /^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{2,70}$/;
+            return re.test(value);
+        },
+        checkPassword(password) {
+            let re = /[a-zA-Z0-9]{8}/;
+            return re.test(password);
+        },
+        test(field, emptyValue, badValue) {
+            if (!field) {
+                emptyValue = true;
+                console.log(emptyValue)
+                return emptyValue;
+            } else {
+                emptyValue = false; //drop error message if user correct the answer
+            }
+
+            if (!this.checkOnlyLetters(field)) {
+                badValue = true;
+                return badValue
+            } else {
+                badValue = false; //drop error message if user correct the answer
+            }
+            console.log(field, emptyValue, badValue)
+        },
+
+        isFormError() {
+            if (!this.dataSignup.email) {
+                this.errors.emptyEmail = true;
+            } else {
+                this.errors.emptyEmail = false; //drop error message if user correct the answer
+            }
+            if (!this.checkEmail(this.dataSignup.email)) {
+                this.errors.badValueEmail = true;
+            } else {
+                this.errors.badValueEmail = false; //drop error message if user correct the answer
+            }
+            if (!this.dataSignup.firstname) {
+                this.errors.emptyFirstname = true;
+            } else {
+                this.errors.emptyFirstname = false; //drop error message if user correct the answer
+            }
+            if (!this.checkOnlyLetters(this.dataSignup.firstname)) {
+                this.errors.badValueFirstname = true;
+            } else {
+                this.errors.badValueFirstname = false; //drop error message if user correct the answer
+            }
+            if (!this.dataSignup.lastname) {
+                this.errors.emptyLastname = true;
+            } else {
+                this.errors.emptyLastname = false; //drop error message if user correct the answer
+            }
+            if (!this.checkOnlyLetters(this.dataSignup.lastname)) {
+                this.errors.badValueLastname = true;
+            } else {
+                this.errors.badValueLastname = false; //drop error message if user correct the answer
+            }
+            if (!this.dataSignup.password) {
+                this.errors.emptyPassword = true;
+            } else {
+                this.errors.emptyPassword = false; //drop error message if user correct the answer
+            }
+            if (!this.checkPassword(this.dataSignup.password)) {
+                this.errors.badValuePassword = true;
+            } else {
+                this.errors.badValuePassword = false;
+            }
+            if (
+                this.errors.emptyEmail ||
+                this.errors.badValueEmail ||
+                this.errors.emptyFirstname ||
+                this.errors.badValueFirstname ||
+                this.errors.emptyLastname ||
+                this.errors.badValueLastname ||
+                this.errors.emptyPassword ||
+                this.errors.badValuePassword
+            ) {
+                console.log("erreur dans le login");
+                return true;
+            }
+            return false;
+        },
+
+
+},
 
       firstname: "",
       lastname: "",
