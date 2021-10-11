@@ -7,8 +7,9 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="firstname">
             first-name
           </label>
-          <input v-model="firstname" :rules="firstnameRules" type="text" placeholder="Jane" name="firstname" id="firstname" autocomplete="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-          <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+          <input v-model="firstname" type="text" placeholder="Jane" name="firstname" id="firstname" autocomplete="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+          <p class="text-red-500 text-xs italic" v-if="errors.emptyFirstname">Please fill out this field.</p>
+          <p class="text-red-500 text-xs italic" v-else-if="errors.badValueFirstname">Please enter a valid first name.</p>
         </div>
       </div>
 
@@ -17,8 +18,9 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lastname">
             last-name
           </label>
-          <input v-model="lastname" :rules="lastnameRules" type="text" placeholder="Doe" name="lastname" id="lastname" autocomplete="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-          <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+          <input v-model="lastname" type="text" placeholder="Doe" name="lastname" id="lastname" autocomplete="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+          <p class="text-red-500 text-xs italic" v-if="errors.emptyLastname">Please fill out this field.</p>
+          <p class="text-red-500 text-xs italic" v-else-if="errors.badValueLastname">Please enter a valid last name.</p>
         </div>
       </div>
 
@@ -27,9 +29,9 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
             email
           </label>
-          <input v-model="email" :rules="emailRules" type="text" placeholder="email" name="email" id="email" autocomplete="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-          <p class="text-red-500 text-xs italic" v-if="errors.emptyEmail">Please fill out this field.</p> -->
-          <p class="text-red-500 text-xs italic" v-else-if="errors.badValueEmail">Please enter a valid address.</p> -->
+          <input v-model="email" type="text" placeholder="email" name="email" id="email" autocomplete="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <p class="text-red-500 text-xs italic" v-if="errors.emptyEmail">Please fill out this field.</p>
+          <p class="text-red-500 text-xs italic" v-else-if="errors.badValueEmail">Please enter a valid address.</p>
 
         </div>
       </div>
@@ -39,8 +41,9 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password">
             Password
           </label>
-          <input v-model="password" :rules="passRules" type="password" name="password" id="password"  placeholder="******************" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-          <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+          <input v-model="password" type="password" name="password" id="password"  placeholder="******************" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <p class="text-red-500 text-xs italic" v-if="errors.emptyPassword">Please fill out this field.</p>
+          <p class="text-red-500 text-xs italic" v-else-if="errors.badValuePassword">Please enter a valid password.</p>
         </div>
       </div>
 
@@ -68,6 +71,14 @@ export default {
     return {
       valid: true,
 
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+
+      msg: false,
+      message: "",
+
       errors: {
                 emptyEmail: false,
                 badValueEmail: false,
@@ -77,9 +88,10 @@ export default {
                 badValueLastname: false,
                 emptyPassword: false,
                 badValuePassword: false,
-            },
-
-      methods: {
+            }
+    }
+  },
+  methods: {
         checkEmail(email) {
             let re = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
@@ -109,44 +121,43 @@ export default {
             }
             console.log(field, emptyValue, badValue)
         },
-
         isFormError() {
-            if (!this.dataSignup.email) {
+            if (!this.email) {
                 this.errors.emptyEmail = true;
             } else {
                 this.errors.emptyEmail = false; //drop error message if user correct the answer
             }
-            if (!this.checkEmail(this.dataSignup.email)) {
+            if (!this.checkEmail(this.email)) {
                 this.errors.badValueEmail = true;
             } else {
                 this.errors.badValueEmail = false; //drop error message if user correct the answer
             }
-            if (!this.dataSignup.firstname) {
+            if (!this.firstname) {
                 this.errors.emptyFirstname = true;
             } else {
                 this.errors.emptyFirstname = false; //drop error message if user correct the answer
             }
-            if (!this.checkOnlyLetters(this.dataSignup.firstname)) {
+            if (!this.checkOnlyLetters(this.firstname)) {
                 this.errors.badValueFirstname = true;
             } else {
                 this.errors.badValueFirstname = false; //drop error message if user correct the answer
             }
-            if (!this.dataSignup.lastname) {
+            if (!this.lastname) {
                 this.errors.emptyLastname = true;
             } else {
                 this.errors.emptyLastname = false; //drop error message if user correct the answer
             }
-            if (!this.checkOnlyLetters(this.dataSignup.lastname)) {
+            if (!this.checkOnlyLetters(this.lastname)) {
                 this.errors.badValueLastname = true;
             } else {
                 this.errors.badValueLastname = false; //drop error message if user correct the answer
             }
-            if (!this.dataSignup.password) {
+            if (!this.password) {
                 this.errors.emptyPassword = true;
             } else {
                 this.errors.emptyPassword = false; //drop error message if user correct the answer
             }
-            if (!this.checkPassword(this.dataSignup.password)) {
+            if (!this.checkPassword(this.password)) {
                 this.errors.badValuePassword = true;
             } else {
                 this.errors.badValuePassword = false;
@@ -165,46 +176,36 @@ export default {
                 return true;
             }
             return false;
-        },
+      },
 
 
-},
-
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-
-      msg: false,
-      message: ""
+      async handleSubmit() {
+        if (this.isFormError() === true) {
+                return;
+        }
+        const res = await this.$axios.$post('http://localhost:3001/admin', {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          email: this.email,
+          password: this.password,
+        })
+          .then(
+              res => {
+                console.log('toto', res);
+                this.message = 'Votre compte est créé';
+                this.msg = true;
+              }
+          ).catch(
+              err => {
+                console.log('titi', err);
+                this.message = err;
+                this.msg = true;
+              }
+          );
     }
   },
-  methods: {
-    async handleSubmit() {
-      const res = await this.$axios.$post('http://localhost:3001/admin', {
-         firstname: this.firstname,
-         lastname: this.lastname,
-         email: this.email,
-         password: this.password,
-      })
-        .then(
-            res => {
-              console.log('toto', res);
-              this.message = 'Votre compte est créé';
-              this.msg = true;
-            }
-        ).catch(
-            err => {
-              console.log('titi', err);
-              this.message = err;
-              this.msg = true;
-            }
-        );
-
-    }
-
-  }
 }
+
 </script>
 
 <style lang="postcss" scoped>
