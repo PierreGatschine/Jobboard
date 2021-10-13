@@ -49,15 +49,17 @@
         {{ item.contrat_type }} - {{ item.temps_de_travail }}
       </p>
       <div class="flex justify-between items-center mx-auto">
-        <p class="mt-4 pt-4 text-gray-600 border-t border-dashed">
-          paru il y a, <spam class="font-thin">{{ item.parution }}</spam>
+        <p class="mt-4 pt-4 text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg> <spam class="font-thin">{{ item.parution }}</spam>
         </p>
         <div class="displayMoreInfo" @click.stop="showModal = !showModal">
           <button
             class="
               bg-blue-600
               hover:bg-blue-700
-              text-gray-50
+              text-gray-100
               focus:outline-none
               focus:ring-2 focus:ring-opacity-50
               rounded-full
