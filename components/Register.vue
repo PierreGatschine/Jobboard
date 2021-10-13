@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="handleSubmit" class="w-full max-w-sm mx-auto">
+    <form @submit.prevent="sendRegister" class="w-full max-w-sm mx-auto">
 
       <div class="flex flex-wrap -mx-3 mt-6 mb-6">
         <div class="w-full px-3">
@@ -43,7 +43,7 @@
           </label>
           <input v-model="password" type="password" name="password" id="password"  placeholder="******************" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
           <p class="text-red-500 text-xs italic" v-if="errors.emptyPassword">Please fill out this field.</p>
-          <p class="text-red-500 text-xs italic" v-else-if="errors.badValuePassword">Please enter a valid password.</p>
+          <!-- <p class="text-red-500 text-xs italic" v-else-if="errors.badValuePassword">Please enter a valid password.</p> -->
         </div>
       </div>
 
@@ -52,7 +52,6 @@
              <!--   @click="sendForm" -->
               <button type="submit" class="inline-flex justify-center mt-3 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 Save
-                <!-- <span v-if="msg">{{ message }}</span> -->
               </button>
               <p class="mt-3">
                 <span v-if="msg != 'err'" class="text-green-600 text-xs italic">{{ message }}</span>
@@ -66,7 +65,7 @@
 
 <script>
 export default {
-  name: 'Signup',
+  name: 'Register',
   data(){
     return {
       valid: true,
@@ -179,11 +178,9 @@ export default {
       },
 
 
-      async handleSubmit() {
-        if (this.isFormError() === true) {
-                return;
-        }
-        const res = await this.$axios.$post('http://localhost:3001/admin', {
+      async sendRegister() {
+        /*   */
+        const response = await this.$axios.$post('http://localhost:3001/api/admin', {
           firstname: this.firstname,
           lastname: this.lastname,
           email: this.email,
@@ -191,17 +188,25 @@ export default {
         })
           .then(
               res => {
+                /* let sign = JSON.parse(res.data); */
                 console.log('toto', res);
                 this.message = 'Votre compte est créé';
+                /* this.message = sign.message; */
                 this.msg = true;
               }
-          ).catch(
+          )
+          .then(res => {
+            console.log(res);
+            setTimeout(() => this.$router.push('/login'), 1500);
+          })
+          .catch(
               err => {
                 console.log('titi', err);
                 this.message = err;
                 this.msg = true;
               }
           );
+
     }
   },
 }

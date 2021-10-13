@@ -33,11 +33,11 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios'],
-  axios: {
-
-  },
-
+  modules: [
+    "@nuxtjs/axios",
+    "@nuxtjs/auth-next"
+  ],
+  axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {}

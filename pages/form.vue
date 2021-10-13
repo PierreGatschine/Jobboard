@@ -36,8 +36,8 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full px-3">
+      <div class="flex flex-wrap -mx-3 laptop:mt-6 mb-6">
+        <div class="w-full la  px-3">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
             Name
           </label>
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="flex  flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password">
             Password
@@ -130,10 +130,10 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full px-3">
+      <div class="flex laptop:grid laptop:grid-cols-3 laptop:place-self-center flex-wrap -mx-3 mb-6">
+        <div class="w-full laptop:col-start-2   px-3">
              <!--   @click="sendForm" -->
-              <button type="submit" class="inline-flex justify-center mt-3 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <button type="submit" class="mt-3 laptop:place-self-center py-2 px-4 laptop:py-4 laptop:px-17 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 Save
 
               </button>
@@ -174,7 +174,7 @@ export default {
   methods: {
     async sendForm() {
 
-      const res = await this.$axios.$post('http://localhost:3001/peoples', {
+      const res = await this.$axios.$post('http://localhost:3001/api/peoples', {
          genre: this.genre,
          name: this.name,
          email: this.email,
@@ -217,6 +217,7 @@ export default {
 
 <style lang="postcss" scoped>
   form {
-    @apply bg-white rounded-lg p-3 mx-auto;
+    @apply laptop:max-w-4xl laptop:grid laptop:grid-cols-2 laptop:gap-2 bg-white rounded-lg p-3 mx-auto;
   }
+
 </style>

@@ -76,7 +76,7 @@
       const post = await $axios.$get(`http://localhost:3001/advertisements//${params.id}`)
       return { post } */
       async fetchSomething() {
-        const advertisements  = await this.$axios.$get('http://localhost:3001/advertisements');
+        const advertisements  = await this.$axios.$get('http://localhost:3001/api/advertisements');
         console.log("message:", advertisements);
         this.allAdvertisements = advertisements;
         console.log(allAdvertisements);

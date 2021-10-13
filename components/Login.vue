@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      let res = await this.$axios.$post('http://localhost:3001/admin', {
+      let res = await this.$axios.$post('http://localhost:3001/api/admin', {
          email: this.email,
          password: this.password,
       })
