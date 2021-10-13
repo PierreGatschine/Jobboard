@@ -82,6 +82,6 @@ export default {
 
 <style lang="postcss" scoped>
   form {
-    @apply bg-white rounded-lg p-3 mx-auto;
+    @apply bg-gray-100 rounded-lg p-3 mx-auto;
   }
 </style>

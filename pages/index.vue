@@ -1,10 +1,12 @@
 <template>
 <div>
     <Appbar/>
-   <!--  <Home/> -->
-   <AdvList/>
-  <!--  <Tutorial/> -->
-</div>
+    <div class="m-3 mb-5">
+      <Wrapper msg="Offres"/>
+    </div>
+    <AdvList />
+
+  </div>
 
 </template>
 
@@ -17,6 +19,6 @@ export default {
 
 <style lang="postcss">
   html {
-    @apply bg-gray-200;
+    @apply bg-gray-700;
   }
 </style>

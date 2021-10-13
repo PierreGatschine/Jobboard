@@ -217,7 +217,7 @@ export default {
 
 <style lang="postcss" scoped>
   form {
-    @apply laptop:max-w-4xl laptop:grid laptop:grid-cols-2 laptop:gap-2 bg-white rounded-lg p-3 mx-auto;
+    @apply laptop:max-w-4xl laptop:grid laptop:grid-cols-2 laptop:gap-2 bg-gray-100 rounded-lg p-3 mx-auto shadow;
   }
 
 </style>
