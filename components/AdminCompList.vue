@@ -11,7 +11,7 @@
         sm:pt-0
       "
     >
-      <div class="max-w-4xl mx-auto mb-20 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto mb-20  sm:px-6 lg:px-8">
 
         <div
           class="
@@ -21,22 +21,22 @@
             overflow-hidden
             shadow
             rounded-lg
-            m-2
-            p-6
+            m-0
+            p-2
           "
           v-for="company in allCompanies"
           v-bind:key="company"
         >
           <div class="max-w-6xl flex justify-between items-center mx-auto">
             <div class="flex flex-col">
-              <h2 class="text-2xl p-2 leading-7 font-semibold">
+              <h2 class="text-xl laptoptext-2xl p-2 leading-7 font-semibold">
                 {{ company.name }}
               </h2>
-              <h3 class="text-xl p-2 leading-7 font-light">
+              <h3 class="text-lg laptop:text-xl p-2 leading-7 font-light">
                 {{ company.activies }}
               </h3>
             </div>
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center ml-5">
               <div class="btn ml-1">
               <NuxtLink to="/formComp" class="btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />

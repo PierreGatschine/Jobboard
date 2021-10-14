@@ -60,6 +60,7 @@ export default {
         .then(
             res => {
               console.log('toto', res);
+              localStorage.setItem("jwt", res.data.token)
               this.message = 'Votre compte est créé';
               this.msg = true;
             }
@@ -82,6 +83,6 @@ export default {
 
 <style lang="postcss" scoped>
   form {
-    @apply bg-gray-100 rounded-lg p-3 mx-auto;
+    @apply bg-blue-200 rounded-lg p-3 mx-auto;
   }
 </style>

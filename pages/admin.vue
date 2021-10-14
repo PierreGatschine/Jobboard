@@ -2,7 +2,7 @@
   <div>
     <Appbar v-bind:style="{ background: activeColor}"/>
     <div class="m-3 mb-5">
-      <Wrapper msg="Administration"/>
+      <Wrapper msg="Dashboard"/>
     </div>
     <div class="m-3 mb-5 ">
       <Title msg="Advertisements"/>

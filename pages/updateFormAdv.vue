@@ -4,12 +4,12 @@
       <NavForm/>
     </div>
     <div class="m-3 mb-5">
-      <Wrapper msg="Add Company"/>
+      <Wrapper msg="Update Advertisement"/>
     </div>
     <form @submit.prevent="sendForm" class="w-full max-w-sm mx-auto">
 
       <div class="flex flex-wrap -mx-3 laptop:mt-6 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full la  px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="name">
             Name
           </label>
@@ -19,7 +19,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 laptop:mt-6 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full la  px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="activies">
             Activies
           </label>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="address">
             address
           </label>
@@ -38,7 +38,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
             <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="city">
               City
             </label>
@@ -47,7 +47,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="postal_code">
             postal_code
           </label>
@@ -56,7 +56,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="siret">
             Siret
           </label>
@@ -65,7 +65,7 @@
       </div>
 
       <div class="flex  flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="password">
             Password
           </label>
@@ -75,7 +75,7 @@
       </div>
 
       <div class="flex  flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="number_employes">
             Number employes
           </label>
@@ -85,7 +85,7 @@
       </div>
 
       <div class="flex  flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="website">
             Website
           </label>
@@ -95,7 +95,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="phone">
             phone
           </label>
@@ -108,7 +108,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="email">
             email
           </label>
@@ -117,7 +117,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="contact_name">
             Contact Name
           </label>
@@ -129,7 +129,7 @@
       <div class="flex laptop:grid laptop:grid-cols-3 laptop:place-self-center flex-wrap -mx-3 mb-6">
         <div class="w-full laptop:col-start-2   px-3">
              <!--   @click="sendForm" -->
-              <button type="submit" class="m-2 laptop:m-O mt-3 laptop:place-self-center py-2 px-4 laptop:py-4 laptop:px-17 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <button type="submit" class="mt-3 laptop:place-self-center py-2 px-4 laptop:py-4 laptop:px-17 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 Save
 
               </button>
@@ -146,72 +146,15 @@ import Wrapper from '../components/Wrapper.vue'
 import NavForm from '../components/NavForm.vue'
 export default {
   components: { Wrapper, NavForm },
-   data() {
+
+  data() {
     return {
         errors: {
                   emptyContent: false
         },
-        valid: true,
-        name:"",
-        activies:"",
-        address:"",
-        city:"",
-        postal_code:"",
-        siret:"",
-        password:"",
-        number_employes:"",
-        website:"",
-        phone: "",
-        email:"",
-        contact_name:"",
-
-        msg: false,
-        message:"",
+        message:""
+    }
   }
-    },
-  methods: {
-    async sendForm() {
-
-      const res = await this.$axios.$post('http://localhost:3001/api/companies', {
-         name: this.name,
-         activies: this.activies,
-         address: this.address,
-         city: this.city,
-         postal_code: this.postal_code,
-         siret: this.siret,
-         password: this.password,
-         number_employes: this.number_employes,
-         website: this.website,
-         phone: this.phone,
-         email: this.email,
-         contact_name: this.contact_name
-
-      })
-         .then(
-            res => {
-              console.log('toto', res);
-              this.message = 'Les informations de la compagnie sont enregistrées !';
-              this.msg = true;
-            }
-        ).catch(
-            err => {
-              console.log('titi Ayaya !', err);
-              this.message = err;
-            }
-        );
-
-
-    },
-    /* e.preventDefault; */
-    /* async sendForm() {
-      this.dataForms = JSON.stringify(this.dataForm)
-      console.log("C'est parti !");
-        const form  = await this.$axios.$post('http://localhost:3001/peoples', this.dataForms);
-        console.log("message:", form);
-    }, */
-
-  },
-
 }
 </script>
 

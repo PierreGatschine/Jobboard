@@ -21,18 +21,18 @@
             overflow-hidden
             shadow
             rounded-lg
-            m-2
-            p-6
+            m-0
+            p-0
           "
           v-for="allAdvertisement in allAdvertisements"
           v-bind:key="allAdvertisement"
         >
           <div class="max-w-6xl flex justify-between items-center mx-auto">
             <div class="flex flex-col">
-              <h2 class="text-2xl p-2 leading-7 font-semibold">
+              <h2 class="text-xl laptoptext-2xl p-2 leading-7 font-semibold">
                 {{ allAdvertisement.title }}
               </h2>
-              <h3 class="text-xl p-2 leading-7 font-light">
+              <h3 class="text-lg laptop:text-xl p-2 leading-7 font-light">
                 {{ allAdvertisement.name }}
               </h3>
             </div>
@@ -44,7 +44,7 @@
               </NuxtLink>
               </div>
               <div class="btn ml-1">
-              <NuxtLink to="/admin" class="btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <NuxtLink to="/updateFormAdv" class="btn"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                 </svg>
               </NuxtLink>

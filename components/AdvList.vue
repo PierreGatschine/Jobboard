@@ -3,7 +3,8 @@
     <div
       class="
         mt-8
-        bg-gray-300
+        bg-blue-100
+
         text-gray-600
         overflow-hidden
         shadow

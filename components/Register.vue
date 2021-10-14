@@ -180,11 +180,14 @@ export default {
 
       async sendRegister() {
         /*   */
+        const jwt = localStorage.getItem("jwt")
         const response = await this.$axios.$post('http://localhost:3001/api/admin', {
           firstname: this.firstname,
           lastname: this.lastname,
           email: this.email,
           password: this.password,
+        }, {
+          authorization: "Bearer " + jwt
         })
           .then(
               res => {
@@ -215,6 +218,6 @@ export default {
 
 <style lang="postcss" scoped>
   form {
-    @apply bg-gray-100 rounded-lg p-3 mx-auto;
+    @apply bg-blue-200 rounded-lg p-3 mx-auto;
   }
 </style>
