@@ -25,7 +25,7 @@
       </div>
 
       <h3 class="text-xl leading-7 font-light">
-        {{ item.name }}
+        {{ item.name }} 
       </h3>
       <p class="mt-3 text-gray-600">
         <spam class="font-bold">Skills</spam><br />

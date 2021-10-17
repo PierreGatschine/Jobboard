@@ -33,10 +33,19 @@
 
       <div class="flex flex-wrap laptop:mt-6 mb-6">
         <div class="w-full la  px-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
-            Name
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="first_name">
+            First-naame
           </label>
-          <input v-model="name" type="text" placeholder="Doe" name="name" id="name" autocomplete="name" class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+          <input v-model="first_name" type="text" placeholder="Jane" name="first_name" id="first_name" autocomplete="first_name" class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+          <p class="text-red-500 text-xs italic" v-if="errors.emptyContent">Please fill out this field.</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap laptop:mt-6 mb-6">
+        <div class="w-full la  px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="last_name">
+            Last-name
+          </label>
+          <input v-model="last_name" type="text" placeholder="Doe" name="last_name" id="last_name" autocomplete="last_name" class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
           <p class="text-red-500 text-xs italic" v-if="errors.emptyContent">Please fill out this field.</p>
         </div>
       </div>
@@ -94,10 +103,10 @@
 
       <div class="flex flex-wrap mb-6">
         <div class="w-full px-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="zip">
-            Zip
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="website">
+            website
           </label>
-          <input v-model="zip" type="text" name="zip" id="zip" placeholder="13210" class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <input v-model="website" type="text" name="website" id="website" placeholder="https://www.google.fr/" class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
         </div>
       </div>
       <div class="flex flex-wrap mb-6">
@@ -133,7 +142,13 @@
 
               </button>
               <span v-if="msg != 'err'" class="text-green-600 text-xs italic">{{ message }}</span>
-              <span v-else class="text-red-500 text-xs italic">{{ message }}</span>
+              <span v-if="msg === 'err'" class="text-red-500 text-xs italic">{{ message }}</span>
+        </div>
+      </div>
+      <div class="flex laptop:grid laptop:grid-cols-3 laptop:place-self-center flex-wrap mb-6">
+        <div class="w-full laptop:col-start-2   px-3">
+              <span v-if="msg != 'err'" class="text-green-600 text-xs italic">{{ message }}</span>
+              <span v-if="msg === 'err'" class="text-red-500 text-xs italic">{{ message }}</span>
         </div>
       </div>
     </form>
@@ -153,13 +168,14 @@ export default {
 
 
           genre:"",
-          name:"",
+          first_name:"",
+          last_name:"",
           password:"",
           email:"",
-          phone: "",
+          phone_code: "",
           address:"",
           city:"",
-          zip:"",
+          website:"",
           /* file_upload:"" */
 
         msg: false,
@@ -169,14 +185,17 @@ export default {
   methods: {
     async sendForm() {
 
-      const res = await this.$axios.$post('http://localhost:3001/api/peoples', {
+      const res = await this.$axios.$post('http://localhost:3001/api/peoples/signup', {
          genre: this.genre,
-         name: this.name,
+         password: this.password,
+         first_name: this.first_name,
+         last_name: this.last_name,
          email: this.email,
-         phone: this.phone,
+         phone_code: this.phone,
          address: this.address,
          city: this.city,
-         zip: this.zip
+         website: this.website,
+         /* picture: this.picture */
 
       })
          .then(
@@ -212,7 +231,7 @@ export default {
 
 <style lang="postcss" scoped>
   form {
-    @apply laptop:max-w-4xl laptop:grid laptop:grid-cols-2 laptop:gap-2 bg-blue-200 rounded-lg p-3;
+    @apply laptop:max-w-4xl laptop:grid laptop:grid-cols-3 laptop:gap-3 bg-blue-200 rounded-lg p-3;
   }
 
 </style>

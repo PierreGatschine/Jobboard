@@ -1,8 +1,8 @@
 <template>
   <div>
-    <form @submit.prevent="sendRegister" class="w-full max-w-sm mx-auto">
+    <form @submit.prevent="sendRegister" class="max-w-sm mx-auto">
 
-      <div class="flex flex-wrap -mx-3 mt-6 mb-6">
+      <div class="flex flex-wrap  mt-6 mb-6">
         <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="firstname">
             first-name
@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="flex flex-wrap  mb-6">
         <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="lastname">
             last-name
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="flex flex-wrap  mb-6">
         <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="email">
             email
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="flex flex-wrap  mb-6">
         <div class="w-full px-3">
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password">
             Password
@@ -47,7 +47,7 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="flex flex-wrap  mb-6">
         <div class="w-full px-3">
              <!--   @click="sendForm" -->
               <button type="submit" class="inline-flex justify-center mt-3 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -181,7 +181,7 @@ export default {
       async sendRegister() {
         /*   */
         const jwt = localStorage.getItem("jwt")
-        const response = await this.$axios.$post('http://localhost:3001/api/admin', {
+        const response = await this.$axios.$post('http://localhost:3001/api/peoples', {
           firstname: this.firstname,
           lastname: this.lastname,
           email: this.email,
@@ -218,6 +218,6 @@ export default {
 
 <style lang="postcss" scoped>
   form {
-    @apply bg-blue-200 rounded-lg p-3 mx-auto;
+    @apply laptop:max-w-6xl laptop:grid laptop:grid-cols-2 laptop:gap-2 bg-blue-200 rounded-lg p-3;
   }
 </style>

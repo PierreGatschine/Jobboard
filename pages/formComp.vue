@@ -6,10 +6,10 @@
     <div class="m-3 mb-5">
       <Wrapper msg="Add Company"/>
     </div>
-    <form @submit.prevent="sendForm" class="w-full max-w-sm mx-auto">
+    <form @submit.prevent="sendForm" class="max-w-sm mx-auto">
 
-      <div class="flex flex-wrap -mx-3 laptop:mt-6 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="name">
             Name
           </label>
@@ -18,8 +18,8 @@
         </div>
       </div>
 
-      <div class="flex flex-wrap -mx-3 laptop:mt-6 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="activies">
             Activies
           </label>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="address">
             address
           </label>
@@ -38,7 +38,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
             <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="city">
               City
             </label>
@@ -47,7 +47,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="postal_code">
             postal_code
           </label>
@@ -56,7 +56,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="siret">
             Siret
           </label>
@@ -65,7 +65,7 @@
       </div>
 
       <div class="flex  flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="password">
             Password
           </label>
@@ -75,7 +75,7 @@
       </div>
 
       <div class="flex  flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="number_employes">
             Number employes
           </label>
@@ -85,7 +85,7 @@
       </div>
 
       <div class="flex  flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="website">
             Website
           </label>
@@ -95,7 +95,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="phone">
             phone
           </label>
@@ -108,7 +108,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="email">
             email
           </label>
@@ -117,7 +117,7 @@
       </div>
 
       <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full m-2 laptop:m-O px-3">
+        <div class="w-full m-2 px-3">
           <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="contact_name">
             Contact Name
           </label>
@@ -126,10 +126,10 @@
         </div>
       </div>
 
-      <div class="flex laptop:grid laptop:grid-cols-3 laptop:place-self-center flex-wrap -mx-3 mb-6">
-        <div class="w-full laptop:col-start-2   px-3">
+      <div class="flex laptop:grid laptop:grid-cols-4 laptop:col-span-4 flex-wrap -mx-3 mb-6">
+        <div class="w-full px-3">
              <!--   @click="sendForm" -->
-              <button type="submit" class="m-2 laptop:m-O mt-3 laptop:place-self-center py-2 px-4 laptop:py-4 laptop:px-17 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              <button type="submit" class="m-2 py-2 px-4 laptop:py-4 laptop:px-17 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 Save
 
               </button>
@@ -215,6 +215,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="postcss" scoped>
+  form {
+    @apply laptop:max-w-6xl laptop:grid laptop:grid-cols-4 laptop:gap-0 rounded-lg p-3;
+  }
 </style>
